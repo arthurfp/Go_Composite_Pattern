@@ -1,6 +1,9 @@
 package composite
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Composite struct {
 	name       string
@@ -25,7 +28,7 @@ func (c *Composite) Remove(component Component) {
 }
 
 func (c *Composite) Display(depth int) {
-	fmt.Println(string('-', depth) + c.name)
+	fmt.Println(strings.Repeat("-", depth) + c.name)
 	for _, component := range c.components {
 		component.Display(depth + 2)
 	}
