@@ -21,7 +21,7 @@ func TestCompositePattern(t *testing.T) {
 	root.Add(subComposite)
 
 	expected := "root\n--Leaf 1\n--Leaf 2\n--Sub Composite\n----Leaf 3\n----Leaf 4\n"
-	output := captureOutput(func() {
+	output := captureOutputComposite(func() {
 		root.Display(1)
 	})
 
@@ -30,8 +30,23 @@ func TestCompositePattern(t *testing.T) {
 	}
 }
 
-// Helper function to capture output
-func captureOutput(f func()) string {
+func TestCompositeAddRemove(t *testing.T) {
+	composite := NewComposite("Composite")
+	leaf := NewLeaf("Leaf")
+
+	composite.Add(leaf)
+	if len(composite.components) != 1 {
+		t.Errorf("Expected 1 component, got %d", len(composite.components))
+	}
+
+	composite.Remove(leaf)
+	if len(composite.components) != 0 {
+		t.Errorf("Expected 0 components, got %d", len(composite.components))
+	}
+}
+
+// Helper function to capture output for composite tests
+func captureOutputComposite(f func()) string {
 	var buf bytes.Buffer
 	writer := os.Stdout
 	r, w, _ := os.Pipe()
