@@ -28,6 +28,11 @@ func TestCompositePattern(t *testing.T) {
 	if output != expected {
 		t.Errorf("Expected:\n%s\nGot:\n%s", expected, output)
 	}
+
+	expectedCount := 6
+	if root.Count() != expectedCount {
+		t.Errorf("Expected count: %d, Got: %d", expectedCount, root.Count())
+	}
 }
 
 func TestCompositeAddRemove(t *testing.T) {

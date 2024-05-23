@@ -26,4 +26,7 @@ func main() {
 	// Display the structure
 	fmt.Println("Displaying structure:")
 	root.Display(1)
+
+	// Display the total count of components
+	fmt.Printf("Total number of components: %d\n", root.Count())
 }

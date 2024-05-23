@@ -16,16 +16,21 @@ func NewLeaf(name string) *Leaf {
 }
 
 // Add prints an error message as leaves cannot have children.
-func (l *Leaf) Add(c Component) {
+func (l *Leaf) Add(_ Component) {
 	fmt.Println("Cannot add to a leaf")
 }
 
 // Remove prints an error message as leaves cannot have children.
-func (l *Leaf) Remove(c Component) {
+func (l *Leaf) Remove(_ Component) {
 	fmt.Println("Cannot remove from a leaf")
 }
 
 // Display prints the name of the leaf node with indentation.
 func (l *Leaf) Display(depth int) {
 	fmt.Println(strings.Repeat("-", depth) + l.name)
+}
+
+// Count returns 1 as leaf is a single component.
+func (l *Leaf) Count() int {
+	return 1
 }

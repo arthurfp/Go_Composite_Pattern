@@ -38,3 +38,12 @@ func (c *Composite) Display(depth int) {
 		component.Display(depth + 2)
 	}
 }
+
+// Count returns the total number of components within the composite.
+func (c *Composite) Count() int {
+	count := 1 // Counting the composite itself
+	for _, component := range c.components {
+		count += component.Count()
+	}
+	return count
+}

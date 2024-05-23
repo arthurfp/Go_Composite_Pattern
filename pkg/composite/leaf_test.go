@@ -48,6 +48,15 @@ func TestLeafDisplay(t *testing.T) {
 	}
 }
 
+func TestLeafCount(t *testing.T) {
+	leaf := NewLeaf("Leaf")
+
+	expectedCount := 1
+	if leaf.Count() != expectedCount {
+		t.Errorf("Expected count: %d, Got: %d", expectedCount, leaf.Count())
+	}
+}
+
 // Helper function to capture output for leaf tests
 func captureOutputLeaf(f func()) string {
 	var buf bytes.Buffer
