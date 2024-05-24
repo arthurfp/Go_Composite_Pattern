@@ -20,7 +20,7 @@ func TestCompositePattern(t *testing.T) {
 	root.Add(leaf2)
 	root.Add(subComposite)
 
-	expected := "root\n--Leaf 1\n--Leaf 2\n--Sub Composite\n----Leaf 3\n----Leaf 4\n"
+	expected := "-root\n---Leaf 1\n---Leaf 2\n---Sub Composite\n-----Leaf 3\n-----Leaf 4\n"
 	output := captureOutputComposite(func() {
 		root.Display(1)
 	})
